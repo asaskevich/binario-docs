@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Reader &mdash; binario-docs 0.0.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="binario-docs 0.0.4 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">binario-docs 0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="class-reader">
+<span id="reader-docs"></span><h1>Class <cite>Reader</cite><a class="headerlink" href="#class-reader" title="Permalink to this headline">¶</a></h1>
+<p>Reader lets an application read primitive data types from an underlying input file.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s">&quot;file.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">read_short</span><span class="p">()</span>
+<span class="go">2014</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">read_bool</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">read_float</span><span class="p">()</span>
+<span class="go">3.1415</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">read_string</span><span class="p">()</span>
+<span class="go">&quot;Hello, world!&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">b&#39;\x80\x14\n\xff\x00&#39;</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="init-self-file-name-byte-ordering-network">
+<h2>__init__(self, file_name, byte_ordering=NETWORK)<a class="headerlink" href="#init-self-file-name-byte-ordering-network" title="Permalink to this headline">¶</a></h2>
+<p>Create new Reader instance and open file for reading. If it necessary, you can specify byte order - <cite>little-endian</cite> or <cite>big-endian</cite>. By default byte order is <cite>network`(`big-endian</cite>).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_1</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s">&quot;file_1.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r_2</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s">&quot;file_2.dat&quot;</span><span class="p">,</span> <span class="n">binario</span><span class="o">.</span><span class="n">LITTLE_ENDIAN</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="close-self">
+<h2>close(self)<a class="headerlink" href="#close-self" title="Permalink to this headline">¶</a></h2>
+<p>Closes this input file.</p>
+</div>
+<div class="section" id="is-closed-self">
+<h2>is_closed(self)<a class="headerlink" href="#is-closed-self" title="Permalink to this headline">¶</a></h2>
+<p>Check is input file already closed.</p>
+</div>
+<div class="section" id="flush-self">
+<h2>flush(self)<a class="headerlink" href="#flush-self" title="Permalink to this headline">¶</a></h2>
+<p>Flushes this input file.</p>
+</div>
+<div class="section" id="get-file-self">
+<h2>get_file(self)<a class="headerlink" href="#get-file-self" title="Permalink to this headline">¶</a></h2>
+<p>Return current input file.</p>
+</div>
+<div class="section" id="get-position-self">
+<h2>get_position(self)<a class="headerlink" href="#get-position-self" title="Permalink to this headline">¶</a></h2>
+<p>Return count of bytes already taken from the input file.</p>
+</div>
+<div class="section" id="get-file-size-self">
+<h2>get_file_size(self)<a class="headerlink" href="#get-file-size-self" title="Permalink to this headline">¶</a></h2>
+<p>Returns the length of the file.</p>
+</div>
+<div class="section" id="is-eof-self">
+<h2>is_eof(self)<a class="headerlink" href="#is-eof-self" title="Permalink to this headline">¶</a></h2>
+<p>Check is already reached end of file.</p>
+</div>
+<div class="section" id="get-remaining-size-self">
+<h2>get_remaining_size(self)<a class="headerlink" href="#get-remaining-size-self" title="Permalink to this headline">¶</a></h2>
+<p>Return remaining count of bytes, available for reading.</p>
+</div>
+<div class="section" id="seek-self-pos">
+<h2>seek(self, pos)<a class="headerlink" href="#seek-self-pos" title="Permalink to this headline">¶</a></h2>
+<p>Move to new input file position. If position is negative or out of file, raise Exception.</p>
+</div>
+<div class="section" id="read-self-size-1">
+<h2>read(self, size=1)<a class="headerlink" href="#read-self-size-1" title="Permalink to this headline">¶</a></h2>
+<p>Read byte buffer with specified size from input file.</p>
+<p>Raise exception in two cases:
+- File already closed.
+- Not enough data to read.</p>
+<p>Keyword arguments:
+size &#8211; size of buffer to read (default 1)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s">&quot;file.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">b&#39;\x80\x14\n\xff\x00&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-string-self">
+<h2>read_string(self)<a class="headerlink" href="#read-string-self" title="Permalink to this headline">¶</a></h2>
+<p>Read string from input file with UTF-8 encoding.</p>
+</div>
+<div class="section" id="read-byte-self">
+<h2>read_byte(self)<a class="headerlink" href="#read-byte-self" title="Permalink to this headline">¶</a></h2>
+<p>Read byte from input file.</p>
+</div>
+<div class="section" id="read-bool-self">
+<h2>read_bool(self)<a class="headerlink" href="#read-bool-self" title="Permalink to this headline">¶</a></h2>
+<p>Read boolean from the underlying input file as a 1-byte value.</p>
+</div>
+<div class="section" id="read-int-self">
+<h2>read_int(self)<a class="headerlink" href="#read-int-self" title="Permalink to this headline">¶</a></h2>
+<p>Read signed integer from the underlying input file as a 4-byte value.</p>
+</div>
+<div class="section" id="read-short-self">
+<h2>read_short(self)<a class="headerlink" href="#read-short-self" title="Permalink to this headline">¶</a></h2>
+<p>Read signed short from the underlying input file as a 2-byte value.</p>
+</div>
+<div class="section" id="read-long-self">
+<h2>read_long(self)<a class="headerlink" href="#read-long-self" title="Permalink to this headline">¶</a></h2>
+<p>Read signed long from the underlying input file as a 8-byte value.</p>
+</div>
+<div class="section" id="read-float-self">
+<h2>read_float(self)<a class="headerlink" href="#read-float-self" title="Permalink to this headline">¶</a></h2>
+<p>Read float from the underlying input file as a 4-byte value.</p>
+</div>
+<div class="section" id="read-double-self">
+<h2>read_double(self)<a class="headerlink" href="#read-double-self" title="Permalink to this headline">¶</a></h2>
+<p>Read double from the underlying input file as a 8-byte value.</p>
+<p><a class="reference internal" href="index.html#index-file"><em>Welcome to binario&#8217;s documentation!</em></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Class <cite>Reader</cite></a><ul>
+<li><a class="reference internal" href="#init-self-file-name-byte-ordering-network">__init__(self, file_name, byte_ordering=NETWORK)</a></li>
+<li><a class="reference internal" href="#close-self">close(self)</a></li>
+<li><a class="reference internal" href="#is-closed-self">is_closed(self)</a></li>
+<li><a class="reference internal" href="#flush-self">flush(self)</a></li>
+<li><a class="reference internal" href="#get-file-self">get_file(self)</a></li>
+<li><a class="reference internal" href="#get-position-self">get_position(self)</a></li>
+<li><a class="reference internal" href="#get-file-size-self">get_file_size(self)</a></li>
+<li><a class="reference internal" href="#is-eof-self">is_eof(self)</a></li>
+<li><a class="reference internal" href="#get-remaining-size-self">get_remaining_size(self)</a></li>
+<li><a class="reference internal" href="#seek-self-pos">seek(self, pos)</a></li>
+<li><a class="reference internal" href="#read-self-size-1">read(self, size=1)</a></li>
+<li><a class="reference internal" href="#read-string-self">read_string(self)</a></li>
+<li><a class="reference internal" href="#read-byte-self">read_byte(self)</a></li>
+<li><a class="reference internal" href="#read-bool-self">read_bool(self)</a></li>
+<li><a class="reference internal" href="#read-int-self">read_int(self)</a></li>
+<li><a class="reference internal" href="#read-short-self">read_short(self)</a></li>
+<li><a class="reference internal" href="#read-long-self">read_long(self)</a></li>
+<li><a class="reference internal" href="#read-float-self">read_float(self)</a></li>
+<li><a class="reference internal" href="#read-double-self">read_double(self)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/reader.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">binario-docs 0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Saskevich.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

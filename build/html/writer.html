@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Writer &mdash; binario-docs 0.0.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="binario-docs 0.0.4 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">binario-docs 0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="class-writer">
+<span id="writer-docs"></span><h1>Class <cite>Writer</cite><a class="headerlink" href="#class-writer" title="Permalink to this headline">¶</a></h1>
+<p>Writer lets an application write primitive data types to an underlying output file.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write_short</span><span class="p">(</span><span class="mi">2014</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write_bool</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write_float</span><span class="p">(</span><span class="mf">3.1415</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write_string</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="mi">128</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="init-self-file-name-byte-ordering-network-append-false">
+<h2>__init__(self, file_name, byte_ordering=NETWORK, append=False)<a class="headerlink" href="#init-self-file-name-byte-ordering-network-append-false" title="Permalink to this headline">¶</a></h2>
+<p>Create new Writer instance and open file for writing. If it necessary, you can specify byte order - <cite>little-endian</cite> or <cite>big-endian</cite>. By default byte order is <cite>network`(`big-endian</cite>). Also you can specify write mode - rewrite existing file or append new data to the end of file. By default it will be rewriting existing files.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Open &quot;file_1.dat&quot; with &quot;network&quot; byte order and rewriting mode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w_1</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file_1.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Open &quot;file_2.dat&quot; with &quot;network&quot; byte order and append mode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w_2</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file_2.dat&quot;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Open &quot;file_3.dat&quot; with &quot;little-endian&quot; byte order</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w_3</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file_3.dat&quot;</span><span class="p">,</span> <span class="n">binario</span><span class="o">.</span><span class="n">LITTLE_ENDIAN</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="close-self">
+<h2>close(self)<a class="headerlink" href="#close-self" title="Permalink to this headline">¶</a></h2>
+<p>Closes own output file.</p>
+</div>
+<div class="section" id="is-closed-self">
+<h2>is_closed(self)<a class="headerlink" href="#is-closed-self" title="Permalink to this headline">¶</a></h2>
+<p>Check is file already closed.</p>
+</div>
+<div class="section" id="current-file-size-self">
+<h2>current_file_size(self)<a class="headerlink" href="#current-file-size-self" title="Permalink to this headline">¶</a></h2>
+<p>Return current size of file.</p>
+</div>
+<div class="section" id="flush-self">
+<h2>flush(self)<a class="headerlink" href="#flush-self" title="Permalink to this headline">¶</a></h2>
+<p>Flushes this output file.</p>
+</div>
+<div class="section" id="get-file-self">
+<h2>get_file(self)<a class="headerlink" href="#get-file-self" title="Permalink to this headline">¶</a></h2>
+<p>Return current output file.</p>
+</div>
+<div class="section" id="write-self-byte">
+<h2>write(self, byte)<a class="headerlink" href="#write-self-byte" title="Permalink to this headline">¶</a></h2>
+<p>Writes a byte buffer to the underlying output file.
+Raise exception when file is already closed.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-bool-self-flag">
+<h2>write_bool(self, flag)<a class="headerlink" href="#write-bool-self-flag" title="Permalink to this headline">¶</a></h2>
+<p>Writes a boolean to the underlying output file as a 1-byte value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write_bool</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-short-self-number">
+<h2>write_short(self, number)<a class="headerlink" href="#write-short-self-number" title="Permalink to this headline">¶</a></h2>
+<p>Writes a short integer to the underlying output file as a 2-byte value.</p>
+</div>
+<div class="section" id="write-int-self-number">
+<h2>write_int(self, number)<a class="headerlink" href="#write-int-self-number" title="Permalink to this headline">¶</a></h2>
+<p>Writes a integer to the underlying output file as a 4-byte value.</p>
+</div>
+<div class="section" id="write-long-self-number">
+<h2>write_long(self, number)<a class="headerlink" href="#write-long-self-number" title="Permalink to this headline">¶</a></h2>
+<p>Writes a long integer to the underlying output file as a 8-byte value.</p>
+</div>
+<div class="section" id="write-string-self-string">
+<h2>write_string(self, string)<a class="headerlink" href="#write-string-self-string" title="Permalink to this headline">¶</a></h2>
+<p>Writes a string to the underlying output file as a buffer of chars with UTF-8 encoding.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write_string</span><span class="p">(</span><span class="s">&quot;Hello, World! → ♪&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-float-self-number">
+<h2>write_float(self, number)<a class="headerlink" href="#write-float-self-number" title="Permalink to this headline">¶</a></h2>
+<p>Writes a float to the underlying output file as a 4-byte value.</p>
+</div>
+<div class="section" id="write-double-self-number">
+<h2>write_double(self, number)<a class="headerlink" href="#write-double-self-number" title="Permalink to this headline">¶</a></h2>
+<p>Writes a double to the underlying output file as a 8-byte value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">binario</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">binario</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="s">&quot;file.dat&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">write_double</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="index.html#index-file"><em>Welcome to binario&#8217;s documentation!</em></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Class <cite>Writer</cite></a><ul>
+<li><a class="reference internal" href="#init-self-file-name-byte-ordering-network-append-false">__init__(self, file_name, byte_ordering=NETWORK, append=False)</a></li>
+<li><a class="reference internal" href="#close-self">close(self)</a></li>
+<li><a class="reference internal" href="#is-closed-self">is_closed(self)</a></li>
+<li><a class="reference internal" href="#current-file-size-self">current_file_size(self)</a></li>
+<li><a class="reference internal" href="#flush-self">flush(self)</a></li>
+<li><a class="reference internal" href="#get-file-self">get_file(self)</a></li>
+<li><a class="reference internal" href="#write-self-byte">write(self, byte)</a></li>
+<li><a class="reference internal" href="#write-bool-self-flag">write_bool(self, flag)</a></li>
+<li><a class="reference internal" href="#write-short-self-number">write_short(self, number)</a></li>
+<li><a class="reference internal" href="#write-int-self-number">write_int(self, number)</a></li>
+<li><a class="reference internal" href="#write-long-self-number">write_long(self, number)</a></li>
+<li><a class="reference internal" href="#write-string-self-string">write_string(self, string)</a></li>
+<li><a class="reference internal" href="#write-float-self-number">write_float(self, number)</a></li>
+<li><a class="reference internal" href="#write-double-self-number">write_double(self, number)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/writer.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">binario-docs 0.0.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Alex Saskevich.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
